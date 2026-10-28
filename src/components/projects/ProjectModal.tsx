@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2, ExternalLink, Info, X } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import type { Project } from '../../data/profile'
+import { useTranslation } from 'react-i18next'
+import { useTerm, type Project } from '../../hooks/useContent'
 import { GitHubIcon } from '../ui/BrandIcons'
 import { ProjectVisual } from '../visuals/ProjectVisuals'
 
@@ -11,11 +12,14 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const { t } = useTranslation()
+  const term = useTerm()
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
+  const isOpen = project !== null
 
   useEffect(() => {
-    if (!project) return
+    if (!isOpen) return
     const previouslyFocused = document.activeElement as HTMLElement | null
     document.body.classList.add('modal-open')
     closeRef.current?.focus()
@@ -42,7 +46,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       window.removeEventListener('keydown', onKey)
       previouslyFocused?.focus()
     }
-  }, [project, onClose])
+  }, [isOpen, onClose])
 
   return (
     <AnimatePresence>
@@ -68,7 +72,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           >
             <div className="relative aspect-[16/8] border-b border-line bg-gradient-to-br from-ink-800 to-ink-900">
               <ProjectVisual kind={project.visual} />
-              <button ref={closeRef} type="button" onClick={onClose} className="icon-btn absolute right-3 top-3 !bg-ink-950/80 backdrop-blur" aria-label="Close project details">
+              <button ref={closeRef} type="button" onClick={onClose} className="icon-btn absolute right-3 top-3 !bg-ink-950/80 backdrop-blur" aria-label={t('projects.closeDetails')}>
                 <X size={18} />
               </button>
             </div>
@@ -96,7 +100,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 ))}
               </div>
 
-              <h4 className="mt-8 text-sm font-semibold uppercase tracking-wider text-fg">Key features</h4>
+              <h4 className="mt-8 text-sm font-semibold uppercase tracking-wider text-fg">{t('projects.keyFeatures')}</h4>
               <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
                 {project.features.map((f) => (
                   <li key={f} className="flex gap-2.5 text-sm text-fg-muted">
@@ -106,11 +110,11 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 ))}
               </ul>
 
-              <h4 className="mt-8 text-sm font-semibold uppercase tracking-wider text-fg">Tech stack</h4>
+              <h4 className="mt-8 text-sm font-semibold uppercase tracking-wider text-fg">{t('projects.techStack')}</h4>
               <div className="mt-3 flex flex-wrap gap-1.5">
-                {project.tech.map((t) => (
-                  <span key={t} className="chip">
-                    {t}
+                {project.tech.map((tech) => (
+                  <span key={tech} className="chip">
+                    {term(tech)}
                   </span>
                 ))}
               </div>
@@ -121,11 +125,11 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </p>
               )}
 
-              <p className="mt-6 text-xs text-fg-subtle">Thumbnail is an illustrative rendering of the project's outputs, not a screenshot of its results.</p>
+              <p className="mt-6 text-xs text-fg-subtle">{t('projects.thumbnailNote')}</p>
 
               <div className="mt-6 flex flex-wrap gap-3 border-t border-line pt-6">
                 <a href={project.repo} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-                  <GitHubIcon width={16} height={16} /> View Repository
+                  <GitHubIcon width={16} height={16} /> {t('projects.viewRepository')}
                 </a>
                 {project.demo && (
                   <a href={project.demo.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">

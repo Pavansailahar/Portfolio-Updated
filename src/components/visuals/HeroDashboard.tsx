@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Activity, Database, Layers, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Area, AreaChart, Bar, BarChart, ComposedChart, Line, ResponsiveContainer } from 'recharts'
 import { wave } from '../../lib/series'
 
@@ -8,9 +9,9 @@ const bars = wave(10, 2.1, 40, 22).map((v, i) => ({ i, v }))
 const spark = wave(16, 1.3, 30, 10).map((v, i) => ({ i, v }))
 
 const layers = [
-  { name: 'Bronze', color: 'var(--color-bronze)' },
-  { name: 'Silver', color: 'var(--color-silver)' },
-  { name: 'Gold', color: 'var(--color-gold)' },
+  { key: 'bronze', color: 'var(--color-bronze)' },
+  { key: 'silver', color: 'var(--color-silver)' },
+  { key: 'gold', color: 'var(--color-gold)' },
 ]
 
 /**
@@ -18,6 +19,7 @@ const layers = [
  * numbers — so it reads as an illustration rather than a claim about results.
  */
 export function HeroDashboard() {
+  const { t } = useTranslation()
   const reduce = useReducedMotion()
   const float = (d: number) =>
     reduce ? {} : { animate: { y: [0, -8, 0] }, transition: { duration: 6, delay: d, repeat: Infinity, ease: 'easeInOut' as const } }
@@ -43,21 +45,21 @@ export function HeroDashboard() {
             <span className="ml-2 font-mono text-[0.7rem] text-fg-subtle">sales_forecast.ipynb</span>
           </div>
           <span className="flex items-center gap-1.5 font-mono text-[0.65rem] text-emerald">
-            <span className="live-dot" /> running
+            <span className="live-dot" /> {t('heroVisual.running')}
           </span>
         </div>
 
         <div className="mt-4 flex items-end justify-between">
           <div>
-            <p className="text-[0.7rem] uppercase tracking-wider text-fg-subtle">Store sales · forecast</p>
+            <p className="text-[0.7rem] uppercase tracking-wider text-fg-subtle">{t('heroVisual.chartTitle')}</p>
             <div className="mt-2 flex gap-3 text-[0.68rem] text-fg-muted">
               <span className="flex items-center gap-1.5">
                 <span className="h-0.5 w-3 rounded bg-cyan" />
-                actual
+                {t('heroVisual.actual')}
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="w-3 border-t border-dashed border-violet" />
-                forecast
+                {t('heroVisual.forecast')}
               </span>
             </div>
           </div>
@@ -81,10 +83,10 @@ export function HeroDashboard() {
 
         <div className="mt-3 grid grid-cols-3 gap-2">
           {layers.map((l, i) => (
-            <div key={l.name} className="rounded-lg border border-line bg-ink-950/40 px-2.5 py-2">
+            <div key={l.key} className="rounded-lg border border-line bg-ink-950/40 px-2.5 py-2">
               <div className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-sm" style={{ background: l.color }} />
-                <span className="text-[0.68rem] font-medium text-fg-muted">{l.name}</span>
+                <span className="h-2 w-2 shrink-0 rounded-sm" style={{ background: l.color }} />
+                <span className="truncate text-[0.68rem] font-medium text-fg-muted">{t(`visuals.${l.key}`)}</span>
               </div>
               <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/5">
                 <motion.div
@@ -109,7 +111,7 @@ export function HeroDashboard() {
       >
         <motion.div {...float(0)} className="glass rounded-xl p-3">
           <div className="flex items-center gap-1.5 text-[0.68rem] text-fg-muted">
-            <Layers size={12} className="text-violet" /> ABC / XYZ segments
+            <Layers size={12} className="text-violet" /> {t('heroVisual.segments')}
           </div>
           <div className="mt-2 h-14">
             <ResponsiveContainer width="100%" height="100%">
@@ -130,7 +132,7 @@ export function HeroDashboard() {
       >
         <motion.div {...float(1.5)} className="glass rounded-xl p-3 font-mono text-[0.62rem] leading-relaxed sm:text-[0.68rem]">
           <div className="mb-1.5 flex items-center gap-1.5 font-sans text-[0.68rem] text-fg-muted">
-            <Database size={12} className="text-cyan" /> gold layer
+            <Database size={12} className="text-cyan" /> {t('heroVisual.goldLayer')}
           </div>
           <p>
             <span className="text-violet">SELECT</span> <span className="text-fg">store, month,</span>
@@ -163,7 +165,7 @@ export function HeroDashboard() {
               </AreaChart>
             </ResponsiveContainer>
           </div>
-          <span className="text-[0.65rem] text-fg-muted">KPIs</span>
+          <span className="shrink-0 text-[0.65rem] text-fg-muted">{t('heroVisual.kpis')}</span>
         </motion.div>
       </motion.div>
     </div>

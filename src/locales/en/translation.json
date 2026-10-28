@@ -1,0 +1,347 @@
+{
+  "meta": {
+    "title": "Pavan Sai Lahar Yakkali — Data Analyst | Data Engineering | Machine Learning",
+    "description": "Portfolio of Pavan Sai Lahar Yakkali — Data Science & Big Data Analytics undergraduate and Data Analyst Intern at Apollo Pharmacy, building data pipelines, ML models and Power BI dashboards."
+  },
+  "app": {
+    "skipToContent": "Skip to content",
+    "backToTop": "Back to top"
+  },
+  "nav": {
+    "primary": "Primary",
+    "logoAria": "{{name}} — back to top",
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "achievements": "Achievements",
+    "contact": "Contact",
+    "resume": "Resume",
+    "downloadResume": "Download Resume",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "language": {
+    "button": "Language: {{language}}. Change language",
+    "listLabel": "Choose language"
+  },
+  "hero": {
+    "badge": "Data Analyst Intern | Data Engineering | Machine Learning",
+    "headline1": "Turning Data Into Decisions.",
+    "headline2": "Building Solutions That Matter.",
+    "intro": "I'm Pavan Sai Lahar Yakkali, a Data Science undergraduate and aspiring data professional passionate about transforming complex datasets into actionable insights and building intelligent, data-driven solutions.",
+    "location": "Hyderabad, India",
+    "explore": "Explore My Projects",
+    "download": "Download Resume",
+    "connect": "Let's Connect",
+    "githubAria": "GitHub profile (opens in new tab)",
+    "linkedinAria": "LinkedIn profile (opens in new tab)",
+    "degreeLine": "B.Tech · Data Science & Big Data Analytics",
+    "scroll": "Scroll",
+    "scrollAria": "Scroll to About section"
+  },
+  "heroVisual": {
+    "running": "running",
+    "chartTitle": "Store sales · forecast",
+    "actual": "actual",
+    "forecast": "forecast",
+    "segments": "ABC / XYZ segments",
+    "goldLayer": "gold layer",
+    "kpis": "KPIs"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "An analytical thinker who likes building things that work.",
+    "paragraphs": [
+      "I'm a B.Tech student in Computer Science Engineering, specializing in Data Science & Big Data Analytics at KLEF Deemed to be University. I enjoy the full journey of data — from messy raw extracts to the dashboard a decision-maker actually opens.",
+      "As a Data Analyst Intern at Apollo Pharmacy, I analyzed pharmacy sales and operational data, built Power BI dashboards for KPI tracking, and worked on cleaning, validation and ETL workflows with SQL, Python and Databricks.",
+      "I'm especially drawn to building reliable data pipelines and business intelligence solutions, and to applying machine learning for predictive analytics. Alongside data work I keep sharpening my software engineering fundamentals in Java and data structures.",
+      "I learn by building — every project here started as a question I wanted to answer properly, with reproducible code and honest numbers."
+    ],
+    "focus": [
+      { "label": "Data Analytics", "detail": "Trends, KPIs, and stakeholder-ready insight" },
+      { "label": "Data Engineering", "detail": "Medallion pipelines, ETL, Delta Lake" },
+      { "label": "Machine Learning", "detail": "Forecasting, classification, clustering" },
+      { "label": "Business Intelligence", "detail": "Power BI and Tableau dashboards" }
+    ],
+    "education": {
+      "degree": "B.Tech in Computer Science Engineering — Data Science & Big Data Analytics",
+      "period": "Jul 2023 – May 2027"
+    },
+    "stats": {
+      "cgpa": { "label": "CGPA", "sub": "KLEF University" },
+      "internship": { "label": "Internship", "sub": "Apollo Pharmacy" },
+      "projects": { "label": "Projects", "sub": "3 featured below" },
+      "certifications": { "label": "Certifications", "sub": "Earned" }
+    }
+  },
+  "experience": {
+    "eyebrow": "Experience",
+    "title": "Where analysis met real business data.",
+    "description": "Hands-on work with pharmacy sales and operational data — from raw extracts to dashboards people use.",
+    "role": "Data Analyst Intern",
+    "period": "June 2026 – October 2026",
+    "summary": "Analyzed pharmacy sales and inventory data to identify trends and support business decisions. Developed interactive Power BI dashboards to monitor key performance indicators and implemented data cleaning, validation, and ETL workflows using SQL, Python, and Databricks.",
+    "highlights": [
+      { "title": "Sales & customer trend analysis", "text": "Pharmacy sales data analysed to surface customer trends that support business decision-making." },
+      { "title": "Interactive Power BI dashboards", "text": "Dashboards tracking 15+ KPIs including revenue, inventory turnover and customer lifetime value." },
+      { "title": "SQL & Python transformation", "text": "ETL pipelines that clean, validate and transform structured data from multiple sources." },
+      { "title": "Databricks workflows", "text": "Data engineering work on Databricks for transformation and analysis." },
+      { "title": "KPI tracking & reporting", "text": "Recurring business reporting built around agreed KPIs." },
+      { "title": "Data quality & validation", "text": "Automated validation rules that reduced data errors by 25%." }
+    ]
+  },
+  "projects": {
+    "eyebrow": "Featured Projects",
+    "title": "Pipelines, models and dashboards — end to end.",
+    "description": "Three projects that span data engineering, machine learning and business intelligence. Open any card for the full breakdown.",
+    "moreHeading": "More projects",
+    "repository": "Repository",
+    "viewRepository": "View Repository",
+    "details": "Details",
+    "openDetails": "Open details for {{title}}",
+    "closeDetails": "Close project details",
+    "keyFeatures": "Key features",
+    "techStack": "Tech stack",
+    "thumbnailNote": "Thumbnail is an illustrative rendering of the project's outputs, not a screenshot of its results.",
+    "repoAria": "{{title}} — view repository on GitHub",
+    "items": {
+      "apollo-goa": {
+        "category": "Data Engineering & Machine Learning",
+        "summary": "Retail analytics platform built on a SQL medallion architecture and Databricks Delta Lake, processing 7.17M+ transaction records with store-level Prophet forecasting and ABC/XYZ + K-Means segmentation.",
+        "overview": [
+          "Developed a retail analytics platform using a SQL medallion architecture and Databricks Delta Lake to process more than 7.17 million transaction records.",
+          "Raw POS extracts were consolidated in SQL Server, re-modelled through bronze/silver/gold layers, mirrored into Databricks as Delta tables, and surfaced through a Power BI report and a standalone web dashboard.",
+          "Implemented Prophet-based store-level sales forecasting and customer/product segmentation using ABC/XYZ analysis and K-Means clustering."
+        ],
+        "features": [
+          "SQL Server bronze → silver → gold medallion views over one consolidated sales table",
+          "Databricks Delta Lake layers with business-question SQL notebooks",
+          "Prophet forecasting for per-store next-month sales",
+          "Store-SKU segmentation with ABC/XYZ analysis and K-Means",
+          "Power BI dashboard with 30+ visuals plus a web dashboard with data lineage docs"
+        ],
+        "facts": [
+          { "label": "Transaction rows", "value": "7.17M+" },
+          { "label": "Goa stores", "value": "58" },
+          { "label": "Time span", "value": "Jan 2024 – Jun 2026" }
+        ],
+        "demo": "Live Dashboard"
+      },
+      "zomato-bi": {
+        "category": "Machine Learning & Business Intelligence",
+        "summary": "End-to-end analytics pipeline with ML models for delivery-time prediction and customer churn classification, plus a six-page Power BI dashboard backed by automated tests.",
+        "overview": [
+          "Built an end-to-end analytics pipeline incorporating machine learning models for delivery-time prediction and customer churn classification.",
+          "Twelve raw operational tables move through cleaning, SQL analytics, exploratory analysis and feature engineering into two independent ML problems and Power BI-ready datasets — each stage reproducible with its own script.",
+          "Developed a six-page Power BI dashboard with automated testing and reproducible analytical workflows."
+        ],
+        "features": [
+          "Delivery-time regression from distance, traffic, weather and prep-time features",
+          "Customer churn classification over a 60-day inactivity window",
+          "SQL analytics on PostgreSQL and SQLite",
+          "Six-page Power BI dashboard and written business-insights report",
+          "Automated test suite and one-script-per-stage reproducible pipeline"
+        ],
+        "facts": [
+          { "label": "Raw tables", "value": "12" },
+          { "label": "ML problems", "value": "2" },
+          { "label": "Dashboard pages", "value": "6" }
+        ],
+        "note": "Built on a synthetic, Zomato-style dataset for learning purposes — not real Zomato data."
+      },
+      "sql-warehouse": {
+        "category": "Data Engineering",
+        "summary": "SQL Server data warehouse integrating CRM and ERP sources through Bronze, Silver and Gold layers into an analytics-ready star schema.",
+        "overview": [
+          "Designed a SQL Server data warehouse integrating CRM and ERP data through a Bronze, Silver, and Gold medallion architecture.",
+          "Implemented ETL workflows with stored procedures for ingestion, data cleansing, standardization and multi-source integration.",
+          "Modelled the Gold layer as a star schema so business users can query clean dimensions and facts directly."
+        ],
+        "features": [
+          "Bronze / Silver / Gold layered warehouse in SQL Server",
+          "Stored-procedure ETL for ingestion, cleansing and standardization",
+          "CRM + ERP multi-source integration",
+          "Star schema dimensional model for analytics",
+          "Data quality checks and documented naming conventions"
+        ],
+        "facts": [
+          { "label": "Layers", "value": "3" },
+          { "label": "Source systems", "value": "CRM + ERP" },
+          { "label": "Model", "value": "Star schema" }
+        ]
+      }
+    },
+    "other": {
+      "supply-chain": {
+        "category": "Analytics Engineering · ML · Operations Research",
+        "summary": "Synthetic ERP supply-chain data modelled with dbt on DuckDB, Prophet demand forecasts tracked in MLflow, OR-Tools reorder-point optimization and a Streamlit dashboard, orchestrated by Airflow on Docker with GitHub Actions CI."
+      },
+      "twitter": {
+        "category": "NLP · Machine Learning",
+        "summary": "Hackathon project classifying tweets as positive or negative: text preprocessing and stemming, TF-IDF features and Logistic Regression trained on the 1.6M-tweet Sentiment140 dataset (77.6% test accuracy)."
+      },
+      "agv": {
+        "category": "Robotics · Control Systems",
+        "summary": "Differential-drive mobile robot simulation with ROS 2 Jazzy, Gazebo Harmonic and Nav2 — LiDAR and camera sensors, SLAM mapping, AMCL localization and autonomous navigation with an MPPI controller."
+      }
+    }
+  },
+  "visuals": {
+    "revenue": "Revenue",
+    "stores": "Stores",
+    "forecast": "Forecast",
+    "salesTrend": "Sales trend · Prophet forecast",
+    "eta": "ETA (min)",
+    "onTime": "On-time",
+    "churnRisk": "Churn risk",
+    "distanceVsTime": "Distance vs delivery time",
+    "ordersByHour": "Orders by hour",
+    "retained": "Retained",
+    "atRisk": "At risk",
+    "bronze": "Bronze",
+    "silver": "Silver",
+    "gold": "Gold",
+    "raw": "raw",
+    "cleansed": "cleansed",
+    "starSchema": "star schema",
+    "bi": "BI",
+    "warehouseAria": "Diagram: CRM and ERP flow through Bronze, Silver and Gold layers into analytics"
+  },
+  "github": {
+    "eyebrow": "Open Source",
+    "title": "The code behind the work.",
+    "description": "Public repositories pulled live from GitHub — every project above links to its source.",
+    "repos": "Repos",
+    "followers": "Followers",
+    "following": "Following",
+    "recentActivity": "Recent activity",
+    "loading": "Loading from GitHub…",
+    "unreachable": "GitHub is unreachable right now — see the profile for live activity.",
+    "noActivity": "No recent public activity.",
+    "viewProfile": "View GitHub Profile",
+    "allRepos": "All {{count}} repositories",
+    "allReposNoCount": "All repositories",
+    "browseAll": "Browse everything on GitHub",
+    "publicRepo": "Public repository.",
+    "liveSite": "Live site",
+    "updated": "Updated {{time}}",
+    "events": {
+      "pushed_one": "Pushed {{count}} commit to {{repo}}",
+      "pushed_other": "Pushed {{count}} commits to {{repo}}",
+      "pushedNoCount": "Pushed to {{repo}}",
+      "created": "Created {{ref}} in {{repo}}",
+      "createdRepo": "Created repository {{repo}}",
+      "madePublic": "Made {{repo}} public",
+      "released": "Released {{repo}}"
+    },
+    "repoBlurbs": {
+      "Apollo-Goa-Data-Engineering-project": "Medallion pipeline, Databricks Delta Lake, Prophet forecasting and store-SKU segmentation.",
+      "Apollo-Sales-Dashboard": "Standalone web dashboard for the Goa retail sales analysis.",
+      "Zomato-Business-Intelligence-Delivery-Time-Prediction-Platform": "Delivery-time regression, churn classification and Power BI reporting.",
+      "Data-Warehouse": "SQL Server warehouse integrating CRM and ERP data into a star schema.",
+      "Supply_chain_management": "dbt + DuckDB marts, Prophet forecasts in MLflow, OR-Tools optimization, Airflow on Docker.",
+      "Autonomous-Mobile-Robot-AGV-Navigation---Control-Systems-": "ROS 2 + Gazebo differential-drive robot with SLAM, AMCL and Nav2 navigation.",
+      "Twitter-Sentiment-Analysis": "Hackathon project classifying tweet sentiment with TF-IDF and Logistic Regression."
+    }
+  },
+  "skills": {
+    "eyebrow": "Technical Skills",
+    "title": "A toolkit built around the data lifecycle.",
+    "description": "Grouped by where each tool sits in the journey from raw data to decisions.",
+    "groups": {
+      "code": { "title": "Programming Languages", "blurb": "Core languages for analysis and engineering" },
+      "chart": { "title": "Data Analytics & Visualization", "blurb": "From exploration to stakeholder dashboards" },
+      "pipeline": { "title": "Data Engineering", "blurb": "Pipelines, warehouses and cloud data services" },
+      "brain": { "title": "Machine Learning", "blurb": "Predictive models that answer business questions" },
+      "database": { "title": "Databases", "blurb": "Relational and document stores" },
+      "tools": { "title": "Development Tools", "blurb": "Everyday environment" }
+    }
+  },
+  "terms": {
+    "ETL Pipelines": "ETL Pipelines",
+    "Medallion Architecture": "Medallion Architecture",
+    "Predictive Analytics": "Predictive Analytics",
+    "Classification": "Classification",
+    "Clustering": "Clustering",
+    "Time-Series Forecasting": "Time-Series Forecasting",
+    "Stored Procedures": "Stored Procedures",
+    "Star Schema": "Star Schema",
+    "Physics Simulation": "Physics Simulation"
+  },
+  "achievements": {
+    "eyebrow": "Certifications & Achievements",
+    "title": "Credentials, competitions and community.",
+    "description": "Formal certifications alongside the problem-solving and leadership I've shown outside the classroom.",
+    "certsHeading": "Certifications",
+    "activitiesHeading": "Achievements & Activities",
+    "issuedBy": "Issued by",
+    "viewProject": "View project",
+    "certs": {
+      "oci": { "title": "Oracle Cloud Infrastructure 2025 Certified Data Science Professional", "issuer": "Oracle", "area": "Cloud · Data Science" },
+      "mongodb": { "title": "MongoDB Associate Developer", "issuer": "MongoDB", "area": "Databases · NoSQL" },
+      "aws": { "title": "AWS Certified Solutions Architect – Associate", "issuer": "Amazon Web Services", "area": "Cloud · Architecture" },
+      "github": { "title": "GitHub Foundations", "issuer": "GitHub", "area": "Version Control · DevOps" },
+      "jlpt": { "title": "Japanese-Language Proficiency Test (JLPT) N5", "issuer": "Japan Foundation & JEES", "area": "Language" }
+    },
+    "items": {
+      "olympiad": {
+        "title": "Ramanujan Mathematics Olympiad",
+        "tag": "Second Place",
+        "text": "Secured second place, demonstrating strong mathematical aptitude, analytical thinking and problem-solving ability."
+      },
+      "ohayo": {
+        "title": "Ohayo Japan — KL University 2026",
+        "tag": "Core Team Member",
+        "text": "Core member of the event management team, coordinating activities and hospitality — leadership, teamwork and organization in practice."
+      },
+      "hackathon": {
+        "title": "One-Day Hackathon",
+        "tag": "Team Lead",
+        "text": "Led a team to build a Twitter Sentiment Analysis project, presented the project review, and explored AI tools and their practical applications."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "titleBefore": "Let's Build Something ",
+    "titleHighlight": "Meaningful",
+    "titleAfter": " With Data.",
+    "text": "I'm always interested in opportunities to solve real-world problems, develop impactful data solutions, and collaborate on innovative projects.",
+    "emailLabel": "Email",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub",
+    "basedIn": "Based in {{location}}",
+    "formAria": "Contact form",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "Internship, project, collaboration…",
+    "message": "Message",
+    "messagePlaceholder": "Tell me a bit about what you have in mind.",
+    "send": "Send Message",
+    "sendViaEmail": "Send via Email",
+    "sending": "Sending…",
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email address.",
+      "subject": "Please add a short subject.",
+      "message": "Message should be at least 10 characters."
+    },
+    "status": {
+      "mailto": "Your email app should open with the message ready to send. If nothing happened, email me directly at the address on the left.",
+      "sent": "Thanks — your message has been delivered. I'll get back to you soon.",
+      "error": "Something went wrong sending your message.",
+      "sendByEmail": "Send it by email instead"
+    }
+  },
+  "footer": {
+    "tagline": "Data Analytics · Data Engineering · Machine Learning",
+    "githubAria": "GitHub profile",
+    "linkedinAria": "LinkedIn profile",
+    "emailAria": "Send an email"
+  }
+}

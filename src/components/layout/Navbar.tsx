@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { navItems, profile } from '../../data/profile'
 import { useActiveSection } from '../../hooks/useActiveSection'
-
-const ids = navItems.map((n) => n.id)
+import { LanguageSwitcher } from './LanguageSwitcher'
 
 export function Navbar() {
-  const active = useActiveSection(ids)
+  const { t } = useTranslation()
+  const active = useActiveSection(navItems)
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -31,8 +32,8 @@ export function Navbar() {
         scrolled || open ? 'border-b border-line bg-ink-950/75 backdrop-blur-xl' : 'border-b border-transparent'
       }`}
     >
-      <nav aria-label="Primary" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#home" className="group flex items-center gap-2.5" aria-label={`${profile.name} — back to top`}>
+      <nav aria-label={t('nav.primary')} className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+        <a href="#home" className="group flex shrink-0 items-center gap-2.5" aria-label={t('nav.logoAria', { name: profile.name })}>
           <span className="grid h-9 w-9 place-items-center rounded-lg border border-line-strong bg-gradient-to-br from-cyan/20 to-violet/20 font-display text-sm font-bold text-fg transition-colors group-hover:border-cyan/50">
             {profile.initials}
           </span>
@@ -40,29 +41,30 @@ export function Navbar() {
         </a>
 
         <ul className="hidden items-center gap-0.5 lg:flex">
-          {navItems.map((item) => (
-            <li key={item.id}>
+          {navItems.map((id) => (
+            <li key={id}>
               <a
-                href={`#${item.id}`}
-                aria-current={active === item.id ? 'true' : undefined}
-                className={`nav-link block rounded-lg px-3 py-2 text-sm transition-colors ${
-                  active === item.id ? 'text-fg' : 'text-fg-muted hover:text-fg'
+                href={`#${id}`}
+                aria-current={active === id ? 'true' : undefined}
+                className={`nav-link block whitespace-nowrap rounded-lg px-2.5 py-2 text-sm transition-colors xl:px-3 ${
+                  active === id ? 'text-fg' : 'text-fg-muted hover:text-fg'
                 }`}
               >
-                {item.label}
+                {t(`nav.${id}`)}
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
+          <LanguageSwitcher />
           <a href={profile.resume} download className="btn btn-secondary hidden !h-9 !px-3.5 text-sm md:inline-flex">
-            Resume
+            {t('nav.resume')}
           </a>
           <button
             type="button"
             className="icon-btn lg:hidden"
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={open ? t('nav.closeMenu') : t('nav.openMenu')}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((o) => !o)}
@@ -83,24 +85,24 @@ export function Navbar() {
             className="overflow-hidden border-t border-line lg:hidden"
           >
             <ul className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
-              {navItems.map((item) => (
-                <li key={item.id}>
+              {navItems.map((id) => (
+                <li key={id}>
                   <a
-                    href={`#${item.id}`}
+                    href={`#${id}`}
                     onClick={() => setOpen(false)}
-                    aria-current={active === item.id ? 'true' : undefined}
+                    aria-current={active === id ? 'true' : undefined}
                     className={`flex items-center justify-between rounded-lg px-3 py-3 text-base ${
-                      active === item.id ? 'bg-white/5 text-fg' : 'text-fg-muted'
+                      active === id ? 'bg-white/5 text-fg' : 'text-fg-muted'
                     }`}
                   >
-                    {item.label}
-                    {active === item.id && <span className="h-1.5 w-1.5 rounded-full bg-cyan" aria-hidden="true" />}
+                    {t(`nav.${id}`)}
+                    {active === id && <span className="h-1.5 w-1.5 rounded-full bg-cyan" aria-hidden="true" />}
                   </a>
                 </li>
               ))}
               <li className="mt-2 px-3 pb-2">
                 <a href={profile.resume} download className="btn btn-primary w-full">
-                  Download Resume
+                  {t('nav.downloadResume')}
                 </a>
               </li>
             </ul>

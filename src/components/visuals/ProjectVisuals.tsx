@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Area, AreaChart, Bar, BarChart, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, XAxis, YAxis, ZAxis } from 'recharts'
 import type { ProjectVisualKind } from '../../data/profile'
 import { wave } from '../../lib/series'
@@ -11,8 +12,8 @@ const panel = 'rounded-lg border border-line bg-ink-950/50'
 
 function Kpi({ label, color }: { label: string; color: string }) {
   return (
-    <div className={`${panel} px-2.5 py-2`}>
-      <p className="text-[0.58rem] uppercase tracking-wider text-fg-subtle">{label}</p>
+    <div className={`${panel} min-w-0 px-2.5 py-2`}>
+      <p className="truncate text-[0.58rem] uppercase tracking-wider text-fg-subtle">{label}</p>
       <div className="mt-1.5 h-1.5 w-3/4 rounded-full" style={{ background: color, opacity: 0.85 }} />
       <div className="mt-1 h-1 w-1/2 rounded-full bg-white/10" />
     </div>
@@ -29,16 +30,17 @@ const segs = [
 ]
 
 function RetailVisual({ animate }: { animate: boolean }) {
+  const { t } = useTranslation()
   return (
     <div className="grid h-full grid-rows-[auto_1fr] gap-2 p-3">
       <div className="grid grid-cols-3 gap-2">
-        <Kpi label="Revenue" color="#22d3ee" />
-        <Kpi label="Stores" color="#3b82f6" />
-        <Kpi label="Forecast" color="#a78bfa" />
+        <Kpi label={t('visuals.revenue')} color="#22d3ee" />
+        <Kpi label={t('visuals.stores')} color="#3b82f6" />
+        <Kpi label={t('visuals.forecast')} color="#a78bfa" />
       </div>
       <div className="grid min-h-0 grid-cols-[1.6fr_1fr] gap-2">
         <div className={`${panel} flex min-h-0 flex-col p-2`}>
-          <p className="text-[0.58rem] text-fg-subtle">Sales trend · Prophet forecast</p>
+          <p className="truncate text-[0.58rem] text-fg-subtle">{t('visuals.salesTrend')}</p>
           <div className="min-h-0 flex-1">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={retailTrend} margin={{ top: 6, right: 4, left: 4, bottom: 2 }}>
@@ -50,7 +52,7 @@ function RetailVisual({ animate }: { animate: boolean }) {
         </div>
         <div className="grid min-h-0 grid-rows-2 gap-2">
           <div className={`${panel} flex min-h-0 flex-col p-2`}>
-            <p className="text-[0.58rem] text-fg-subtle">Stores</p>
+            <p className="truncate text-[0.58rem] text-fg-subtle">{t('visuals.stores')}</p>
             <div className="min-h-0 flex-1">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={storeBars} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
@@ -95,16 +97,17 @@ const scatter = Array.from({ length: 40 }, (_, i) => {
 const hourly = wave(24, 1.7, 40, 26).map((v, i) => ({ i, v }))
 
 function DeliveryVisual({ animate }: { animate: boolean }) {
+  const { t } = useTranslation()
   return (
     <div className="grid h-full grid-rows-[auto_1fr] gap-2 p-3">
       <div className="grid grid-cols-3 gap-2">
-        <Kpi label="ETA (min)" color="#f59e0b" />
-        <Kpi label="On-time" color="#34d399" />
-        <Kpi label="Churn risk" color="#f87171" />
+        <Kpi label={t('visuals.eta')} color="#f59e0b" />
+        <Kpi label={t('visuals.onTime')} color="#34d399" />
+        <Kpi label={t('visuals.churnRisk')} color="#f87171" />
       </div>
       <div className="grid min-h-0 grid-cols-[1.3fr_1fr] gap-2">
         <div className={`${panel} flex min-h-0 flex-col p-2`}>
-          <p className="text-[0.58rem] text-fg-subtle">Distance vs delivery time</p>
+          <p className="truncate text-[0.58rem] text-fg-subtle">{t('visuals.distanceVsTime')}</p>
           <div className="min-h-0 flex-1">
             <ResponsiveContainer width="100%" height="100%">
               <ScatterChart margin={{ top: 6, right: 4, left: 4, bottom: 2 }}>
@@ -118,7 +121,7 @@ function DeliveryVisual({ animate }: { animate: boolean }) {
         </div>
         <div className="grid min-h-0 grid-rows-[1fr_auto] gap-2">
           <div className={`${panel} flex min-h-0 flex-col p-2`}>
-            <p className="text-[0.58rem] text-fg-subtle">Orders by hour</p>
+            <p className="truncate text-[0.58rem] text-fg-subtle">{t('visuals.ordersByHour')}</p>
             <div className="min-h-0 flex-1">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={hourly} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
@@ -129,11 +132,11 @@ function DeliveryVisual({ animate }: { animate: boolean }) {
           </div>
           <div className={`${panel} space-y-1.5 p-2`}>
             {[
-              ['Retained', 'w-[78%]', 'bg-emerald'],
-              ['At risk', 'w-[34%]', 'bg-red-400'],
+              [t('visuals.retained'), 'w-[78%]', 'bg-emerald'],
+              [t('visuals.atRisk'), 'w-[34%]', 'bg-red-400'],
             ].map(([l, w, c]) => (
-              <div key={l} className="flex items-center gap-2">
-                <span className="w-11 text-[0.55rem] text-fg-subtle">{l}</span>
+              <div key={c} className="flex items-center gap-2">
+                <span className="w-12 truncate text-[0.55rem] text-fg-subtle">{l}</span>
                 <div className="h-1.5 flex-1 rounded-full bg-white/5">
                   <div className={`h-full rounded-full ${w} ${c} opacity-80`} />
                 </div>
@@ -148,13 +151,14 @@ function DeliveryVisual({ animate }: { animate: boolean }) {
 
 /* ---------------------------- Warehouse ----------------------------- */
 function WarehouseVisual() {
+  const { t } = useTranslation()
   const layers = [
-    { x: 118, label: 'Bronze', sub: 'raw', color: 'var(--color-bronze)' },
-    { x: 196, label: 'Silver', sub: 'cleansed', color: 'var(--color-silver)' },
-    { x: 274, label: 'Gold', sub: 'star schema', color: 'var(--color-gold)' },
+    { x: 118, label: t('visuals.bronze'), sub: t('visuals.raw'), color: 'var(--color-bronze)' },
+    { x: 196, label: t('visuals.silver'), sub: t('visuals.cleansed'), color: 'var(--color-silver)' },
+    { x: 274, label: t('visuals.gold'), sub: t('visuals.starSchema'), color: 'var(--color-gold)' },
   ]
   return (
-    <svg viewBox="0 0 400 220" className="h-full w-full" role="img" aria-label="Diagram: CRM and ERP flow through Bronze, Silver and Gold layers into analytics">
+    <svg viewBox="0 0 400 220" className="h-full w-full" role="img" aria-label={t('visuals.warehouseAria')}>
       <defs>
         <linearGradient id="wh-flow" x1="0" x2="1">
           <stop offset="0" stopColor="#22d3ee" />
@@ -176,16 +180,16 @@ function WarehouseVisual() {
       ))}
       {/* layers */}
       {layers.map((l, i) => (
-        <g key={l.label}>
+        <g key={l.x}>
           <rect x={l.x} y="62" width="62" height="96" rx="10" fill="rgb(11 16 32)" stroke={l.color} strokeOpacity="0.7" />
           <rect x={l.x} y="62" width="62" height="5" rx="2" fill={l.color} />
           {[0, 1, 2].map((r) => (
             <rect key={r} x={l.x + 10} y={84 + r * 16} width={42 - r * 8} height="5" rx="2.5" fill={l.color} opacity={0.35} />
           ))}
-          <text x={l.x + 31} y="182" textAnchor="middle" fontSize="11" fontWeight="600" fill="#e6eaf5" fontFamily="Space Grotesk">
+          <text x={l.x + 31} y="182" textAnchor="middle" fontSize="11" fontWeight="600" fill="#e6eaf5" className="svg-label-display">
             {l.label}
           </text>
-          <text x={l.x + 31} y="196" textAnchor="middle" fontSize="8.5" fill="#69728c" fontFamily="Inter">
+          <text x={l.x + 31} y="196" textAnchor="middle" fontSize="8.5" fill="#69728c" className="svg-label">
             {l.sub}
           </text>
           {i < layers.length - 1 && <line x1={l.x + 62} y1="110" x2={l.x + 78} y2="110" stroke="url(#wh-flow)" strokeWidth="1.6" className="flow-line" />}
@@ -197,8 +201,8 @@ function WarehouseVisual() {
       {[0, 1, 2, 3].map((b) => (
         <rect key={b} x={353 + b * 7.5} y={130 - [18, 30, 24, 40][b]} width="5" height={[18, 30, 24, 40][b]} rx="1.5" fill="#22d3ee" opacity={0.5 + b * 0.12} />
       ))}
-      <text x="366" y="168" textAnchor="middle" fontSize="8.5" fill="#69728c" fontFamily="Inter">
-        BI
+      <text x="366" y="168" textAnchor="middle" fontSize="8.5" fill="#69728c" className="svg-label">
+        {t('visuals.bi')}
       </text>
       <text x="200" y="34" textAnchor="middle" fontSize="9" fill="#69728c" fontFamily="JetBrains Mono" letterSpacing="1.5">
         EXEC load_bronze → load_silver → gold views

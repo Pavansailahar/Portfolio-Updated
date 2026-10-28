@@ -1,50 +1,52 @@
 import { ArrowUpRight } from 'lucide-react'
 import { useCallback, useState } from 'react'
-import { otherProjects, projects, type Project } from '../../data/profile'
-import { GitHubIcon } from '../ui/BrandIcons'
+import { useTranslation } from 'react-i18next'
+import { useOtherProjects, useProjects, useTerm } from '../../hooks/useContent'
 import { ProjectCard } from '../projects/ProjectCard'
 import { ProjectModal } from '../projects/ProjectModal'
+import { GitHubIcon } from '../ui/BrandIcons'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function Projects() {
-  const [active, setActive] = useState<Project | null>(null)
-  const close = useCallback(() => setActive(null), [])
+  const { t } = useTranslation()
+  const term = useTerm()
+  const projects = useProjects()
+  const otherProjects = useOtherProjects()
+  // Track the open project by id so the modal re-renders in the new language if it changes while open.
+  const [activeId, setActiveId] = useState<string | null>(null)
+  const close = useCallback(() => setActiveId(null), [])
+  const active = projects.find((p) => p.id === activeId) ?? null
   const [lead, ...rest] = projects
 
   return (
     <Section id="projects">
-      <SectionHeading
-        index="03"
-        eyebrow="Featured Projects"
-        title="Pipelines, models and dashboards — end to end."
-        description="Three projects that span data engineering, machine learning and business intelligence. Open any card for the full breakdown."
-      />
+      <SectionHeading index="03" eyebrow={t('projects.eyebrow')} title={t('projects.title')} description={t('projects.description')} />
 
       <div className="grid gap-6">
         <Reveal>
-          <ProjectCard project={lead} index={0} featured onOpen={setActive} />
+          <ProjectCard project={lead} index={0} featured onOpen={setActiveId} />
         </Reveal>
         <div className="grid gap-6 md:grid-cols-2">
           {rest.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.08} className="h-full">
-              <ProjectCard project={p} index={i + 1} onOpen={setActive} />
+              <ProjectCard project={p} index={i + 1} onOpen={setActiveId} />
             </Reveal>
           ))}
         </div>
       </div>
 
-      <h3 className="mb-5 mt-16 text-sm font-semibold uppercase tracking-wider text-fg-muted">More projects</h3>
+      <h3 className="mb-5 mt-16 text-sm font-semibold uppercase tracking-wider text-fg-muted">{t('projects.moreHeading')}</h3>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {otherProjects.map((p, i) => (
-          <Reveal key={p.title} delay={(i % 3) * 0.06} className="h-full">
+          <Reveal key={p.id} delay={(i % 3) * 0.06} className="h-full">
             <a
               href={p.repo}
               target="_blank"
               rel="noopener noreferrer"
               className="glass card-hover group flex h-full flex-col rounded-2xl p-6"
-              aria-label={`${p.title} — view repository on GitHub`}
+              aria-label={t('projects.repoAria', { title: p.title })}
             >
               <div className="flex items-start justify-between gap-3">
                 <p className="eyebrow !text-[0.65rem] !normal-case !tracking-wide">{p.category}</p>
@@ -53,14 +55,14 @@ export function Projects() {
               <h4 className="mt-3 text-lg font-semibold leading-snug text-fg">{p.title}</h4>
               <p className="mt-2 text-sm leading-relaxed text-fg-muted">{p.summary}</p>
               <div className="mt-auto flex flex-wrap gap-1.5 pt-5">
-                {p.tech.map((t) => (
-                  <span key={t} className="chip !text-[0.68rem]">
-                    {t}
+                {p.tech.map((tech) => (
+                  <span key={tech} className="chip !text-[0.68rem]">
+                    {term(tech)}
                   </span>
                 ))}
               </div>
               <span className="mt-4 flex items-center gap-1.5 text-sm font-medium text-fg-muted transition-colors group-hover:text-cyan">
-                <GitHubIcon width={14} height={14} /> Repository
+                <GitHubIcon width={14} height={14} /> {t('projects.repository')}
               </span>
             </a>
           </Reveal>

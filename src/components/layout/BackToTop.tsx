@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export function BackToTop() {
+  const { t } = useTranslation()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export function BackToTop() {
           exit={{ opacity: 0, y: 12 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="icon-btn glass fixed bottom-5 right-5 z-40 !h-11 !w-11 !rounded-full"
-          aria-label="Back to top"
+          aria-label={t('app.backToTop')}
         >
           <ArrowUp size={18} />
         </motion.button>

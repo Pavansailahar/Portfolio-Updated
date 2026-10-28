@@ -1,10 +1,12 @@
 import { BarChart3, BrainCircuit, Code2, Database, Wrench, Workflow, type LucideIcon } from 'lucide-react'
-import { skillGroups, type SkillGroup } from '../../data/profile'
+import { useTranslation } from 'react-i18next'
+import { skillGroups, type SkillGroupId } from '../../data/profile'
+import { useTerm } from '../../hooks/useContent'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 
-const groupIcons: Record<SkillGroup['icon'], LucideIcon> = {
+const groupIcons: Record<SkillGroupId, LucideIcon> = {
   code: Code2,
   chart: BarChart3,
   pipeline: Workflow,
@@ -13,7 +15,7 @@ const groupIcons: Record<SkillGroup['icon'], LucideIcon> = {
   tools: Wrench,
 }
 
-const groupAccent: Record<SkillGroup['icon'], string> = {
+const groupAccent: Record<SkillGroupId, string> = {
   code: 'from-cyan/25 to-blue/10 text-cyan',
   chart: 'from-amber/25 to-orange-500/10 text-amber',
   pipeline: 'from-blue/25 to-violet/10 text-blue',
@@ -53,40 +55,37 @@ const techColor: Record<string, string> = {
 }
 
 /* Bento layout: the larger groups get extra width so rows stay balanced. */
-const order: SkillGroup['icon'][] = ['pipeline', 'code', 'chart', 'brain', 'database', 'tools']
-const ordered = order.map((k) => skillGroups.find((g) => g.icon === k)).filter((g): g is SkillGroup => Boolean(g))
-const wide: Partial<Record<SkillGroup['icon'], string>> = { pipeline: 'sm:col-span-2', tools: 'sm:col-span-2 lg:col-span-3' }
+const order: SkillGroupId[] = ['pipeline', 'code', 'chart', 'brain', 'database', 'tools']
+const ordered = order.map((id) => skillGroups.find((g) => g.id === id)).filter((g): g is (typeof skillGroups)[number] => Boolean(g))
+const wide: Partial<Record<SkillGroupId, string>> = { pipeline: 'sm:col-span-2', tools: 'sm:col-span-2 lg:col-span-3' }
 
 export function Skills() {
+  const { t } = useTranslation()
+  const term = useTerm()
   return (
     <Section id="skills">
-      <SectionHeading
-        index="05"
-        eyebrow="Technical Skills"
-        title="A toolkit built around the data lifecycle."
-        description="Grouped by where each tool sits in the journey from raw data to decisions."
-      />
+      <SectionHeading index="05" eyebrow={t('skills.eyebrow')} title={t('skills.title')} description={t('skills.description')} />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {ordered.map((g, i) => {
-          const Icon = groupIcons[g.icon]
+          const Icon = groupIcons[g.id]
           return (
-            <Reveal key={g.title} delay={(i % 3) * 0.07} className={`h-full ${wide[g.icon] ?? ''}`}>
-              <div className={`glass card-hover flex h-full flex-col rounded-2xl p-6`}>
+            <Reveal key={g.id} delay={(i % 3) * 0.07} className={`h-full ${wide[g.id] ?? ''}`}>
+              <div className="glass card-hover flex h-full flex-col rounded-2xl p-6">
                 <div className="flex items-center gap-3">
-                  <span className={`grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br ${groupAccent[g.icon]}`}>
+                  <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${groupAccent[g.id]}`}>
                     <Icon size={19} />
                   </span>
                   <div>
-                    <h3 className="font-semibold text-fg">{g.title}</h3>
-                    <p className="text-xs text-fg-subtle">{g.blurb}</p>
+                    <h3 className="font-semibold text-fg">{t(`skills.groups.${g.id}.title`)}</h3>
+                    <p className="text-xs text-fg-subtle">{t(`skills.groups.${g.id}.blurb`)}</p>
                   </div>
                 </div>
                 <ul className="mt-5 flex flex-wrap gap-2">
                   {g.skills.map((s) => (
                     <li key={s} className="chip !py-1.5 !text-[0.8rem] !text-fg transition-colors hover:border-cyan/40">
                       <span className="h-2 w-2 rounded-full" style={{ background: techColor[s] ?? 'var(--color-fg-subtle)' }} aria-hidden="true" />
-                      {s}
+                      {term(s)}
                     </li>
                   ))}
                 </ul>

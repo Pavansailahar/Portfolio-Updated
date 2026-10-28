@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "title": "Pavan Sai Lahar Yakkali — データアナリスト｜データエンジニアリング｜機械学習",
+    "description": "Pavan Sai Lahar Yakkali のポートフォリオ。データサイエンス＆ビッグデータ分析を専攻する学部生で、Apollo Pharmacy のデータアナリスト インターンとして、データパイプライン、機械学習モデル、Power BI ダッシュボードを構築しています。"
+  },
+  "app": {
+    "skipToContent": "本文へスキップ",
+    "backToTop": "ページの先頭へ戻る"
+  },
+  "nav": {
+    "primary": "メインナビゲーション",
+    "logoAria": "{{name}} — ページの先頭へ戻る",
+    "home": "ホーム",
+    "about": "自己紹介",
+    "experience": "職務経験",
+    "projects": "プロジェクト",
+    "skills": "スキル",
+    "achievements": "実績",
+    "contact": "お問い合わせ",
+    "resume": "履歴書",
+    "downloadResume": "履歴書をダウンロード",
+    "openMenu": "メニューを開く",
+    "closeMenu": "メニューを閉じる"
+  },
+  "language": {
+    "button": "言語：{{language}}。言語を変更",
+    "listLabel": "言語を選択"
+  },
+  "hero": {
+    "badge": "データアナリスト インターン｜データエンジニアリング｜機械学習",
+    "headline1": "データを、意思決定の力に。",
+    "headline2": "価値あるソリューションを形に。",
+    "intro": "Pavan Sai Lahar Yakkali です。データサイエンスを専攻する学部生として、複雑なデータを実用的なインサイトへと変え、データドリブンでインテリジェントなソリューションを構築することに情熱を注いでいます。",
+    "location": "インド・ハイデラバード",
+    "explore": "プロジェクトを見る",
+    "download": "履歴書をダウンロード",
+    "connect": "お問い合わせ",
+    "githubAria": "GitHub プロフィール（新しいタブで開きます）",
+    "linkedinAria": "LinkedIn プロフィール（新しいタブで開きます）",
+    "degreeLine": "B.Tech・データサイエンス＆ビッグデータ分析",
+    "scroll": "スクロール",
+    "scrollAria": "自己紹介セクションへスクロール"
+  },
+  "heroVisual": {
+    "running": "実行中",
+    "chartTitle": "店舗売上・予測",
+    "actual": "実績",
+    "forecast": "予測",
+    "segments": "ABC / XYZ 分類",
+    "goldLayer": "Gold レイヤー",
+    "kpis": "KPI"
+  },
+  "about": {
+    "eyebrow": "自己紹介",
+    "title": "分析的に考え、確実に動くものをつくる。",
+    "paragraphs": [
+      "KLEF Deemed to be University にて、コンピュータサイエンス工学（データサイエンス＆ビッグデータ分析専攻）の B.Tech 課程に在籍しています。整理されていない生データから、意思決定者が実際に開くダッシュボードまで、データに関わる一連のプロセス全体に携わることにやりがいを感じています。",
+      "Apollo Pharmacy のデータアナリスト インターンとして、薬局の売上データおよび業務データを分析し、KPI を追跡する Power BI ダッシュボードを構築しました。また、SQL、Python、Databricks を用いたデータクレンジング、検証、ETL ワークフローにも取り組みました。",
+      "特に、信頼性の高いデータパイプラインやビジネスインテリジェンス基盤の構築、そして予測分析への機械学習の活用に強い関心を持っています。データ分野と並行して、Java やデータ構造などソフトウェアエンジニアリングの基礎も磨き続けています。",
+      "手を動かしながら学ぶことを大切にしています。ここで紹介するプロジェクトはいずれも、再現性のあるコードと正確な数値で答えを出したいという問いから始まりました。"
+    ],
+    "focus": [
+      { "label": "データ分析", "detail": "トレンド分析、KPI、関係者向けのインサイト" },
+      { "label": "データエンジニアリング", "detail": "メダリオン型パイプライン、ETL、Delta Lake" },
+      { "label": "機械学習", "detail": "需要予測、分類、クラスタリング" },
+      { "label": "ビジネスインテリジェンス", "detail": "Power BI・Tableau ダッシュボード" }
+    ],
+    "education": {
+      "degree": "コンピュータサイエンス工学 B.Tech — データサイエンス＆ビッグデータ分析専攻",
+      "period": "2023年7月～2027年5月（卒業見込み）"
+    },
+    "stats": {
+      "cgpa": { "label": "CGPA（累積成績平均）", "sub": "KLEF University" },
+      "internship": { "label": "インターンシップ", "sub": "Apollo Pharmacy" },
+      "projects": { "label": "プロジェクト", "sub": "うち 3 件を下記で紹介" },
+      "certifications": { "label": "資格", "sub": "取得済み" }
+    }
+  },
+  "experience": {
+    "eyebrow": "職務経験",
+    "title": "分析と実際のビジネスデータが出会った場所。",
+    "description": "薬局の売上データと業務データを扱った実務経験 — 生データの抽出から、現場で使われるダッシュボードまで。",
+    "role": "データアナリスト インターン",
+    "period": "2026年6月～2026年10月",
+    "summary": "薬局の売上データと在庫データを分析し、トレンドを把握してビジネス上の意思決定を支援しました。主要業績評価指標（KPI）をモニタリングするインタラクティブな Power BI ダッシュボードを開発し、SQL、Python、Databricks を用いてデータクレンジング、検証、ETL ワークフローを実装しました。",
+    "highlights": [
+      { "title": "売上・顧客トレンド分析", "text": "薬局の売上データを分析し、ビジネス上の意思決定を支える顧客トレンドを明らかにしました。" },
+      { "title": "インタラクティブな Power BI ダッシュボード", "text": "売上高、在庫回転率、顧客生涯価値など 15 以上の KPI を追跡するダッシュボード。" },
+      { "title": "SQL・Python によるデータ変換", "text": "複数ソースの構造化データをクレンジング・検証・変換する ETL パイプライン。" },
+      { "title": "Databricks ワークフロー", "text": "Databricks 上でのデータ変換・分析のためのデータエンジニアリング業務。" },
+      { "title": "KPI 追跡とレポーティング", "text": "合意した KPI に基づく定期的なビジネスレポートの作成。" },
+      { "title": "データ品質と検証", "text": "自動検証ルールを導入し、データエラーを 25% 削減しました。" }
+    ]
+  },
+  "projects": {
+    "eyebrow": "主なプロジェクト",
+    "title": "パイプライン、モデル、ダッシュボードを一貫して。",
+    "description": "データエンジニアリング、機械学習、ビジネスインテリジェンスにまたがる 3 つのプロジェクトです。各カードを開くと詳細をご覧いただけます。",
+    "moreHeading": "その他のプロジェクト",
+    "repository": "リポジトリ",
+    "viewRepository": "リポジトリを見る",
+    "details": "詳細",
+    "openDetails": "{{title}} の詳細を開く",
+    "closeDetails": "プロジェクトの詳細を閉じる",
+    "keyFeatures": "主な機能",
+    "techStack": "技術スタック",
+    "thumbnailNote": "サムネイルはプロジェクトのアウトプットをイメージとして描いたもので、実際の結果のスクリーンショットではありません。",
+    "repoAria": "{{title}} — GitHub でリポジトリを見る",
+    "items": {
+      "apollo-goa": {
+        "category": "データエンジニアリング＆機械学習",
+        "summary": "SQL のメダリオンアーキテクチャと Databricks Delta Lake を基盤とした小売分析プラットフォーム。717 万件超の取引データを処理し、Prophet による店舗別の売上予測と ABC/XYZ 分析・K-Means によるセグメンテーションを行います。",
+        "overview": [
+          "SQL のメダリオンアーキテクチャと Databricks Delta Lake を用いて、717 万件を超える取引レコードを処理する小売分析プラットフォームを開発しました。",
+          "POS の生データを SQL Server に集約し、Bronze／Silver／Gold の各レイヤーで再モデリングしたうえで Databricks の Delta テーブルに連携し、Power BI レポートと独立した Web ダッシュボードで可視化しました。",
+          "Prophet による店舗別の売上予測と、ABC/XYZ 分析および K-Means クラスタリングによる顧客・商品のセグメンテーションを実装しました。"
+        ],
+        "features": [
+          "1 つの統合売上テーブルを基にした SQL Server の Bronze → Silver → Gold メダリオンビュー",
+          "ビジネス課題に答える SQL ノートブックを備えた Databricks Delta Lake の各レイヤー",
+          "Prophet による店舗ごとの翌月売上予測",
+          "ABC/XYZ 分析と K-Means による店舗×SKU のセグメンテーション",
+          "30 以上のビジュアルを持つ Power BI ダッシュボードと、データリネージ資料付きの Web ダッシュボード"
+        ],
+        "facts": [
+          { "label": "取引レコード数", "value": "717万件以上" },
+          { "label": "ゴア州の店舗数", "value": "58" },
+          { "label": "対象期間", "value": "2024年1月～2026年6月" }
+        ],
+        "demo": "ライブダッシュボード"
+      },
+      "zomato-bi": {
+        "category": "機械学習＆ビジネスインテリジェンス",
+        "summary": "配達時間予測と顧客離反（チャーン）分類の機械学習モデルを組み込んだエンドツーエンドの分析パイプライン。自動テストに裏付けられた 6 ページ構成の Power BI ダッシュボードも備えています。",
+        "overview": [
+          "配達時間の予測と顧客離反の分類を行う機械学習モデルを組み込んだ、エンドツーエンドの分析パイプラインを構築しました。",
+          "12 の業務テーブル（生データ）を、クレンジング、SQL 分析、探索的データ分析、特徴量エンジニアリングを経て、2 つの独立した機械学習課題と Power BI 用データセットへとつなげています。各工程は個別のスクリプトで再現可能です。",
+          "自動テストと再現性のある分析ワークフローを備えた、6 ページ構成の Power BI ダッシュボードを開発しました。"
+        ],
+        "features": [
+          "距離、交通状況、天候、調理時間などの特徴量による配達時間の回帰予測",
+          "60 日間の非アクティブ期間を基準とした顧客離反の分類",
+          "PostgreSQL と SQLite による SQL 分析",
+          "6 ページ構成の Power BI ダッシュボードとビジネスインサイトのレポート",
+          "自動テストスイートと、工程ごとにスクリプト化された再現可能なパイプライン"
+        ],
+        "facts": [
+          { "label": "生データのテーブル数", "value": "12" },
+          { "label": "機械学習の課題", "value": "2" },
+          { "label": "ダッシュボードのページ数", "value": "6" }
+        ],
+        "note": "学習目的で作成した、Zomato 風の合成データセットを使用しています。実際の Zomato のデータではありません。"
+      },
+      "sql-warehouse": {
+        "category": "データエンジニアリング",
+        "summary": "CRM と ERP のデータを Bronze・Silver・Gold の各レイヤーで統合し、分析に適したスタースキーマへと整備する SQL Server データウェアハウス。",
+        "overview": [
+          "CRM と ERP のデータを Bronze・Silver・Gold のメダリオンアーキテクチャで統合する SQL Server データウェアハウスを設計しました。",
+          "ストアドプロシージャを用いて、データの取り込み、クレンジング、標準化、複数ソースの統合を行う ETL ワークフローを実装しました。",
+          "Gold レイヤーをスタースキーマとしてモデリングし、ビジネスユーザーが整備されたディメンションとファクトを直接クエリできるようにしました。"
+        ],
+        "features": [
+          "SQL Server 上の Bronze／Silver／Gold 階層型ウェアハウス",
+          "取り込み・クレンジング・標準化を行うストアドプロシージャによる ETL",
+          "CRM と ERP の複数ソース統合",
+          "分析用のスタースキーマ型ディメンショナルモデル",
+          "データ品質チェックと文書化された命名規則"
+        ],
+        "facts": [
+          { "label": "レイヤー数", "value": "3" },
+          { "label": "ソースシステム", "value": "CRM + ERP" },
+          { "label": "データモデル", "value": "スタースキーマ" }
+        ]
+      }
+    },
+    "other": {
+      "supply-chain": {
+        "category": "アナリティクスエンジニアリング・機械学習・オペレーションズリサーチ",
+        "summary": "合成した ERP のサプライチェーンデータを DuckDB 上の dbt でモデリングし、MLflow で管理する Prophet の需要予測、OR-Tools による発注点の最適化、Streamlit ダッシュボードを構築。Docker 上の Airflow でオーケストレーションし、GitHub Actions で CI を行っています。"
+      },
+      "twitter": {
+        "category": "自然言語処理・機械学習",
+        "summary": "ツイートをポジティブ／ネガティブに分類するハッカソンプロジェクト。テキストの前処理とステミング、TF-IDF 特徴量、ロジスティック回帰を用い、160 万件のツイートを含む Sentiment140 データセットで学習しました（テスト精度 77.6%）。"
+      },
+      "agv": {
+        "category": "ロボティクス・制御システム",
+        "summary": "ROS 2 Jazzy、Gazebo Harmonic、Nav2 による差動二輪型移動ロボットのシミュレーション。LiDAR とカメラのセンサー、SLAM による地図作成、AMCL による自己位置推定、MPPI コントローラーによる自律走行を実装しています。"
+      }
+    }
+  },
+  "visuals": {
+    "revenue": "売上",
+    "stores": "店舗",
+    "forecast": "予測",
+    "salesTrend": "売上推移・Prophet 予測",
+    "eta": "到着予測（分）",
+    "onTime": "定時配達",
+    "churnRisk": "離反リスク",
+    "distanceVsTime": "距離と配達時間",
+    "ordersByHour": "時間帯別の注文数",
+    "retained": "継続",
+    "atRisk": "要注意",
+    "bronze": "Bronze",
+    "silver": "Silver",
+    "gold": "Gold",
+    "raw": "生データ",
+    "cleansed": "クレンジング済み",
+    "starSchema": "スタースキーマ",
+    "bi": "BI",
+    "warehouseAria": "図：CRM と ERP のデータが Bronze・Silver・Gold の各レイヤーを経て分析へと流れる様子"
+  },
+  "github": {
+    "eyebrow": "オープンソース",
+    "title": "成果を支えるソースコード。",
+    "description": "GitHub から公開リポジトリをリアルタイムで取得しています。上記のプロジェクトはすべてソースコードにリンクしています。",
+    "repos": "リポジトリ",
+    "followers": "フォロワー",
+    "following": "フォロー中",
+    "recentActivity": "最近のアクティビティ",
+    "loading": "GitHub から読み込み中…",
+    "unreachable": "現在 GitHub に接続できません。最新のアクティビティはプロフィールをご覧ください。",
+    "noActivity": "最近の公開アクティビティはありません。",
+    "viewProfile": "GitHub プロフィールを見る",
+    "allRepos": "全 {{count}} 件のリポジトリ",
+    "allReposNoCount": "すべてのリポジトリ",
+    "browseAll": "GitHub ですべて見る",
+    "publicRepo": "公開リポジトリ。",
+    "liveSite": "公開サイト",
+    "updated": "{{time}}に更新",
+    "events": {
+      "pushed_other": "{{repo}} に {{count}} 件のコミットをプッシュ",
+      "pushedNoCount": "{{repo}} にプッシュ",
+      "created": "{{repo}} に {{ref}} を作成",
+      "createdRepo": "リポジトリ {{repo}} を作成",
+      "madePublic": "{{repo}} を公開",
+      "released": "{{repo}} をリリース"
+    },
+    "repoBlurbs": {
+      "Apollo-Goa-Data-Engineering-project": "メダリオン型パイプライン、Databricks Delta Lake、Prophet による予測、店舗×SKU のセグメンテーション。",
+      "Apollo-Sales-Dashboard": "ゴア州の小売売上分析のための独立した Web ダッシュボード。",
+      "Zomato-Business-Intelligence-Delivery-Time-Prediction-Platform": "配達時間の回帰予測、顧客離反の分類、Power BI レポーティング。",
+      "Data-Warehouse": "CRM と ERP のデータをスタースキーマに統合する SQL Server ウェアハウス。",
+      "Supply_chain_management": "dbt + DuckDB のデータマート、MLflow で管理する Prophet 予測、OR-Tools による最適化、Docker 上の Airflow。",
+      "Autonomous-Mobile-Robot-AGV-Navigation---Control-Systems-": "SLAM、AMCL、Nav2 による自律走行を備えた ROS 2 + Gazebo の差動二輪ロボット。",
+      "Twitter-Sentiment-Analysis": "TF-IDF とロジスティック回帰でツイートの感情を分類するハッカソンプロジェクト。"
+    }
+  },
+  "skills": {
+    "eyebrow": "テクニカルスキル",
+    "title": "データライフサイクルを軸にしたスキルセット。",
+    "description": "生データから意思決定に至るまでの各工程ごとに、ツールを分類しています。",
+    "groups": {
+      "code": { "title": "プログラミング言語", "blurb": "分析と開発の中核となる言語" },
+      "chart": { "title": "データ分析・可視化", "blurb": "探索的分析から関係者向けダッシュボードまで" },
+      "pipeline": { "title": "データエンジニアリング", "blurb": "パイプライン、データウェアハウス、クラウドデータサービス" },
+      "brain": { "title": "機械学習", "blurb": "ビジネス課題に答える予測モデル" },
+      "database": { "title": "データベース", "blurb": "リレーショナル DB とドキュメント DB" },
+      "tools": { "title": "開発ツール", "blurb": "日常的に使用している開発環境" }
+    }
+  },
+  "terms": {
+    "ETL Pipelines": "ETL パイプライン",
+    "Medallion Architecture": "メダリオンアーキテクチャ",
+    "Predictive Analytics": "予測分析",
+    "Classification": "分類",
+    "Clustering": "クラスタリング",
+    "Time-Series Forecasting": "時系列予測",
+    "Stored Procedures": "ストアドプロシージャ",
+    "Star Schema": "スタースキーマ",
+    "Physics Simulation": "物理シミュレーション"
+  },
+  "achievements": {
+    "eyebrow": "資格・実績",
+    "title": "資格、コンテスト、そしてコミュニティ活動。",
+    "description": "取得した資格に加え、授業の枠を超えて発揮してきた課題解決力とリーダーシップをご紹介します。",
+    "certsHeading": "資格",
+    "activitiesHeading": "実績・課外活動",
+    "issuedBy": "発行元：",
+    "viewProject": "プロジェクトを見る",
+    "certs": {
+      "oci": { "title": "Oracle Cloud Infrastructure 2025 Certified Data Science Professional", "issuer": "Oracle", "area": "クラウド・データサイエンス" },
+      "mongodb": { "title": "MongoDB Associate Developer", "issuer": "MongoDB", "area": "データベース・NoSQL" },
+      "aws": { "title": "AWS Certified Solutions Architect – Associate", "issuer": "Amazon Web Services", "area": "クラウド・アーキテクチャ" },
+      "github": { "title": "GitHub Foundations", "issuer": "GitHub", "area": "バージョン管理・DevOps" },
+      "jlpt": { "title": "日本語能力試験（JLPT）N5", "issuer": "国際交流基金・日本国際教育支援協会", "area": "語学" }
+    },
+    "items": {
+      "olympiad": {
+        "title": "ラマヌジャン数学オリンピック",
+        "tag": "第2位",
+        "text": "第2位を獲得。高い数学的素養、論理的思考力、課題解決力を発揮しました。"
+      },
+      "ohayo": {
+        "title": "Ohayo Japan — KL University 2026",
+        "tag": "運営コアメンバー",
+        "text": "イベント運営チームのコアメンバーとして、プログラムの進行やおもてなしの調整を担当し、リーダーシップ、チームワーク、組織運営力を実践しました。"
+      },
+      "hackathon": {
+        "title": "1日ハッカソン",
+        "tag": "チームリーダー",
+        "text": "チームを率いて Twitter の感情分析プロジェクトを開発し、プロジェクトレビューで発表しました。あわせて AI ツールとその実践的な活用方法についても探求しました。"
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "お問い合わせ",
+    "titleBefore": "データで、",
+    "titleHighlight": "意味のあるもの",
+    "titleAfter": "を一緒に創りましょう。",
+    "text": "現実の課題解決、インパクトのあるデータソリューションの開発、革新的なプロジェクトでの協業など、さまざまな機会に関心を持っています。お気軽にご連絡ください。",
+    "emailLabel": "メール",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub",
+    "basedIn": "拠点：{{location}}",
+    "formAria": "お問い合わせフォーム",
+    "name": "お名前",
+    "namePlaceholder": "山田 太郎",
+    "email": "メールアドレス",
+    "emailPlaceholder": "you@company.com",
+    "subject": "件名",
+    "subjectPlaceholder": "インターンシップ、プロジェクト、協業のご相談など",
+    "message": "メッセージ",
+    "messagePlaceholder": "ご用件を簡単にお聞かせください。",
+    "send": "送信する",
+    "sendViaEmail": "メールで送信",
+    "sending": "送信中…",
+    "errors": {
+      "name": "お名前を入力してください。",
+      "email": "有効なメールアドレスを入力してください。",
+      "subject": "件名を簡単にご入力ください。",
+      "message": "メッセージは10文字以上でご入力ください。"
+    },
+    "status": {
+      "mailto": "メールアプリが起動し、送信できる状態でメッセージが作成されます。起動しない場合は、左側のアドレスへ直接メールをお送りください。",
+      "sent": "ありがとうございます。メッセージは送信されました。近日中にご連絡いたします。",
+      "error": "メッセージの送信中にエラーが発生しました。",
+      "sendByEmail": "代わりにメールで送信する"
+    }
+  },
+  "footer": {
+    "tagline": "データ分析・データエンジニアリング・機械学習",
+    "githubAria": "GitHub プロフィール",
+    "linkedinAria": "LinkedIn プロフィール",
+    "emailAria": "メールを送る"
+  }
+}

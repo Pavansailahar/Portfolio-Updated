@@ -1,5 +1,8 @@
+import type { TFunction } from 'i18next'
 import { ArrowUpRight, ExternalLink, GitBranch, GitCommitHorizontal, Star } from 'lucide-react'
-import { profile, repoBlurbs } from '../../data/profile'
+import { useTranslation } from 'react-i18next'
+import { profile } from '../../data/profile'
+import { useObject } from '../../hooks/useContent'
 import { useGitHub, type GitHubEvent } from '../../hooks/useGitHub'
 import { GitHubIcon } from '../ui/BrandIcons'
 import { Reveal } from '../ui/Reveal'
@@ -17,42 +20,44 @@ const langColor: Record<string, string> = {
 
 const prettyName = (n: string) => n.replace(/[-_]+/g, ' ').trim()
 
-const relTime = (iso: string) => {
+/** "3 days ago" / "3 日前" / "3 दिन पहले" via the browser's built-in Intl data. */
+const relTime = (iso: string, lang: string) => {
   const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000)
-  if (days < 1) return 'today'
-  if (days === 1) return 'yesterday'
-  if (days < 30) return `${days} days ago`
-  const months = Math.floor(days / 30)
-  return months === 1 ? '1 month ago' : `${months} months ago`
+  // "today" reads better than "0 days ago"; everything else uses "N … ago".
+  if (days < 1) return new Intl.RelativeTimeFormat(lang, { numeric: 'auto' }).format(0, 'day')
+  const rtf = new Intl.RelativeTimeFormat(lang, { numeric: 'always' })
+  if (days < 30) return rtf.format(-days, 'day')
+  if (days < 365) return rtf.format(-Math.floor(days / 30), 'month')
+  return rtf.format(-Math.floor(days / 365), 'year')
 }
 
-const describeEvent = (e: GitHubEvent) => {
+const describeEvent = (e: GitHubEvent, t: TFunction) => {
   const repo = e.repo.name.split('/')[1] ?? e.repo.name
   switch (e.type) {
     case 'PushEvent': {
-      const n = e.payload.size ?? e.payload.commits?.length
-      return n ? `Pushed ${n} commit${n === 1 ? '' : 's'} to ${repo}` : `Pushed to ${repo}`
+      const count = e.payload.size ?? e.payload.commits?.length
+      return count ? t('github.events.pushed', { count, repo }) : t('github.events.pushedNoCount', { repo })
     }
     case 'CreateEvent':
-      return `Created ${e.payload.ref_type ?? 'repository'} in ${repo}`
+      return e.payload.ref_type && e.payload.ref_type !== 'repository'
+        ? t('github.events.created', { ref: e.payload.ref_type, repo })
+        : t('github.events.createdRepo', { repo })
     case 'PublicEvent':
-      return `Made ${repo} public`
+      return t('github.events.madePublic', { repo })
     default:
-      return `Released ${repo}`
+      return t('github.events.released', { repo })
   }
 }
 
 export function GitHubSection() {
+  const { t, i18n } = useTranslation()
+  const lang = i18n.resolvedLanguage ?? 'en'
+  const blurbs = useObject()<Record<string, string>>('github.repoBlurbs')
   const { status, user, repos, events } = useGitHub()
 
   return (
     <Section id="github">
-      <SectionHeading
-        index="04"
-        eyebrow="Open Source"
-        title="The code behind the work."
-        description="Public repositories pulled live from GitHub — every project above links to its source."
-      />
+      <SectionHeading index="04" eyebrow={t('github.eyebrow')} title={t('github.title')} description={t('github.description')} />
 
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
         {/* Profile card */}
@@ -74,30 +79,30 @@ export function GitHubSection() {
 
             <div className="mt-6 grid grid-cols-3 gap-2 text-center">
               {[
-                { label: 'Repos', value: user?.public_repos },
-                { label: 'Followers', value: user?.followers },
-                { label: 'Following', value: user?.following },
+                { label: t('github.repos'), value: user?.public_repos },
+                { label: t('github.followers'), value: user?.followers },
+                { label: t('github.following'), value: user?.following },
               ].map((s) => (
-                <div key={s.label} className="rounded-xl border border-line bg-ink-950/40 py-3">
+                <div key={s.label} className="min-w-0 rounded-xl border border-line bg-ink-950/40 px-1 py-3">
                   <p className="font-display text-lg font-semibold text-fg">{s.value ?? '—'}</p>
-                  <p className="text-[0.68rem] uppercase tracking-wider text-fg-subtle">{s.label}</p>
+                  <p className="truncate text-[0.68rem] uppercase tracking-wider text-fg-subtle">{s.label}</p>
                 </div>
               ))}
             </div>
 
             <div className="mt-6">
-              <p className="text-xs font-semibold uppercase tracking-wider text-fg-muted">Recent activity</p>
-              {status === 'loading' && <p className="mt-3 text-sm text-fg-subtle">Loading from GitHub…</p>}
+              <p className="text-xs font-semibold uppercase tracking-wider text-fg-muted">{t('github.recentActivity')}</p>
+              {status === 'loading' && <p className="mt-3 text-sm text-fg-subtle">{t('github.loading')}</p>}
               {status !== 'loading' && events.length === 0 && (
-                <p className="mt-3 text-sm text-fg-subtle">{status === 'fallback' ? 'GitHub is unreachable right now — see the profile for live activity.' : 'No recent public activity.'}</p>
+                <p className="mt-3 text-sm text-fg-subtle">{status === 'fallback' ? t('github.unreachable') : t('github.noActivity')}</p>
               )}
               <ul className="mt-3 space-y-3">
                 {events.map((e) => (
                   <li key={e.id} className="flex gap-2.5 text-sm">
                     <GitCommitHorizontal size={15} className="mt-0.5 shrink-0 text-cyan" />
                     <span className="min-w-0">
-                      <span className="block break-words text-fg-muted">{describeEvent(e)}</span>
-                      <span className="font-mono text-[0.68rem] text-fg-subtle">{relTime(e.created_at)}</span>
+                      <span className="block break-words text-fg-muted">{describeEvent(e, t)}</span>
+                      <span className="font-mono text-[0.68rem] text-fg-subtle">{relTime(e.created_at, lang)}</span>
                     </span>
                   </li>
                 ))}
@@ -105,7 +110,7 @@ export function GitHubSection() {
             </div>
 
             <a href={profile.github} target="_blank" rel="noopener noreferrer" className="btn btn-secondary mt-auto w-full !mt-6">
-              <GitHubIcon width={16} height={16} /> View GitHub Profile
+              <GitHubIcon width={16} height={16} /> {t('github.viewProfile')}
             </a>
           </div>
         </Reveal>
@@ -127,7 +132,7 @@ export function GitHubSection() {
                   </span>
                   <ArrowUpRight size={16} className="shrink-0 text-fg-subtle transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan" />
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-fg-muted">{repoBlurbs[r.name] ?? 'Public repository.'}</p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-muted">{blurbs[r.name] ?? t('github.publicRepo')}</p>
                 <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-4 text-xs text-fg-subtle">
                   {r.language && (
                     <span className="flex items-center gap-1.5">
@@ -140,10 +145,10 @@ export function GitHubSection() {
                       <Star size={12} /> {r.stargazers_count}
                     </span>
                   )}
-                  {r.pushed_at && <span>Updated {relTime(r.pushed_at)}</span>}
+                  {r.pushed_at && <span>{t('github.updated', { time: relTime(r.pushed_at, lang) })}</span>}
                   {r.homepage && (
                     <span className="flex items-center gap-1 text-cyan">
-                      <ExternalLink size={12} /> Live site
+                      <ExternalLink size={12} /> {t('github.liveSite')}
                     </span>
                   )}
                 </div>
@@ -159,9 +164,9 @@ export function GitHubSection() {
             >
               <GitHubIcon width={22} height={22} className="text-fg-subtle transition-colors group-hover:text-cyan" />
               <span className="font-display font-semibold text-fg">
-                {user ? `All ${user.public_repos} repositories` : 'All repositories'}
+                {user ? t('github.allRepos', { count: user.public_repos }) : t('github.allReposNoCount')}
               </span>
-              <span className="text-sm text-fg-subtle">Browse everything on GitHub</span>
+              <span className="text-sm text-fg-subtle">{t('github.browseAll')}</span>
             </a>
           </Reveal>
         </div>

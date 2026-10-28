@@ -1,5 +1,7 @@
 import { BarChart3, Briefcase, CalendarDays, Database, LineChart, ShieldCheck, TrendingUp, Workflow } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { experience } from '../../data/profile'
+import { useObject } from '../../hooks/useContent'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
@@ -7,14 +9,12 @@ import { SectionHeading } from '../ui/SectionHeading'
 const highlightIcons = [TrendingUp, BarChart3, Workflow, Database, LineChart, ShieldCheck]
 
 export function Experience() {
+  const { t } = useTranslation()
+  const highlights = useObject()<{ title: string; text: string }[]>('experience.highlights')
+
   return (
     <Section id="experience">
-      <SectionHeading
-        index="02"
-        eyebrow="Experience"
-        title="Where analysis met real business data."
-        description="Hands-on work with pharmacy sales and operational data — from raw extracts to dashboards people use."
-      />
+      <SectionHeading index="02" eyebrow={t('experience.eyebrow')} title={t('experience.title')} description={t('experience.description')} />
 
       <div className="relative pl-6 md:pl-10">
         {/* Timeline rail */}
@@ -31,25 +31,25 @@ export function Experience() {
                   <Briefcase size={20} />
                 </span>
                 <div>
-                  <h3 className="text-xl font-semibold text-fg md:text-2xl">{experience.role}</h3>
+                  <h3 className="text-xl font-semibold text-fg md:text-2xl">{t('experience.role')}</h3>
                   <p className="mt-1 font-medium text-cyan">{experience.company}</p>
                 </div>
               </div>
-              <p className="flex items-center gap-2 font-mono text-sm text-fg-muted">
-                <CalendarDays size={15} /> {experience.period}
+              <p className="flex shrink-0 items-center gap-2 font-mono text-sm text-fg-muted">
+                <CalendarDays size={15} /> {t('experience.period')}
               </p>
             </div>
 
             <div className="p-6 md:p-8">
-              <p className="max-w-3xl leading-relaxed text-fg-muted">{experience.summary}</p>
+              <p className="max-w-3xl leading-relaxed text-fg-muted">{t('experience.summary')}</p>
 
               <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {experience.highlights.map((h, i) => {
+                {highlights.map((h, i) => {
                   const Icon = highlightIcons[i % highlightIcons.length]
                   return (
-                    <li key={h.title} className="group rounded-xl border border-line bg-ink-950/30 p-4 transition-colors hover:border-cyan/30">
+                    <li key={i} className="group rounded-xl border border-line bg-ink-950/30 p-4 transition-colors hover:border-cyan/30">
                       <div className="flex items-center gap-2.5">
-                        <Icon size={16} className="text-cyan transition-transform group-hover:scale-110" />
+                        <Icon size={16} className="shrink-0 text-cyan transition-transform group-hover:scale-110" />
                         <p className="text-sm font-semibold text-fg">{h.title}</p>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-fg-subtle">{h.text}</p>
@@ -59,9 +59,9 @@ export function Experience() {
               </ul>
 
               <div className="mt-8 flex flex-wrap gap-2">
-                {experience.stack.map((t) => (
-                  <span key={t} className="chip">
-                    {t}
+                {experience.stack.map((s) => (
+                  <span key={s} className="chip">
+                    {s}
                   </span>
                 ))}
               </div>

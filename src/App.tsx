@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { BackToTop } from './components/layout/BackToTop'
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
@@ -11,10 +12,11 @@ import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
 
 export default function App() {
+  const { t } = useTranslation()
   return (
     <>
       <a href="#main" className="sr-only z-[100] rounded-lg bg-cyan px-4 py-2 font-medium text-ink-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
-        Skip to content
+        {t('app.skipToContent')}
       </a>
       <div className="page-backdrop" aria-hidden="true" />
       <Navbar />
